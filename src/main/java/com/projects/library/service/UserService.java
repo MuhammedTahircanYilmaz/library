@@ -14,7 +14,7 @@ public class UserService {
 
     public void save(User user) {
         String hashedPassword = bCryptPasswordEncoder.encode(user.password());
-        User newUser = new User(user.id(), user.userName(), user.email(), hashedPassword);
+        User newUser = new User(user.id(), user.username(), user.email(), hashedPassword);
         userRepository.save(newUser);
     }
 

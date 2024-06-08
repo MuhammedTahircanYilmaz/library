@@ -10,5 +10,14 @@ CREATE TABLE IF NOT EXISTS Item(
     date_updated TIMESTAMP
 );
 
+CREATE TABLE IF NOT EXISTS Person(
+    id SERIAL PRIMARY KEY,
+    username varchar(50) NOT NULL,
+    email varchar(100) NOT NULL,
+    password text NOT NULL
+);
+
 INSERT INTO Item(title,description,author_studio,status,item_type,date_created)
-VALUES ('Past Life Returner','Seon Hu comes back, rules the world','Hedgethehog','ONGOING','WEBNOVEL',CURRENT_TIMESTAMP)
+VALUES ('Past Life Returner','Seon Hu comes back, rules the world','Hedgethehog','ONGOING','WEBNOVEL',CURRENT_TIMESTAMP);
+
+INSERT INTO Person(username, email, password) VALUES ('Tahir', 'someemail@gmail.com', 'password')

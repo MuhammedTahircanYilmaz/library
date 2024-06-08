@@ -10,14 +10,13 @@ import org.springframework.data.relational.core.mapping.Column;
 
 import java.io.Serializable;
 
-
 @Table(name = "user")
 public record User(
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
         Integer id,
-        @Column("userName")
+        @Column("username")
         @NotBlank
-        String userName,
+        String username,
         @Column("email")
         @NotBlank
         String email,
