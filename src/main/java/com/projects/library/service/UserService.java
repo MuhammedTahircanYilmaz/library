@@ -1,6 +1,6 @@
 package com.projects.library.service;
 
-import com.projects.library.model.User;
+import com.projects.library.model.UserEntity;
 import com.projects.library.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -12,13 +12,16 @@ public class UserService {
 
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public void save(User user) {
-        String hashedPassword = bCryptPasswordEncoder.encode(user.password());
-        User newUser = new User(user.id(), user.username(), user.email(), hashedPassword);
-        userRepository.save(newUser);
+    public void save(UserEntity userEntity) {
+        String hashedPassword = bCryptPasswordEncoder.encode(userEntity.password());
+        UserEntity newUserEntity = new UserEntity(userEntity.id(), userEntity.username(), userEntity.email(), hashedPassword);
+        userRepository.save(newUserEntity);
     }
 
-    public User findByUsername(String username){
+    public UserEntity findByUsername(String username){
         return userRepository.findByUsername(username);
+    }
+    public UserEntity findByEmail(String email){
+        return userRepository.findByEmail(email);
     }
 }

@@ -58,7 +58,7 @@ public class ItemController {
         return repository.findByStatus(status);
     }
 
-    @GetMapping("/filter/itemType/{type}")
+    @GetMapping("/filter/itemType/{itemType}")
     public List<Item> findByItemType(@PathVariable Type itemType){
         return repository.findByItemType(itemType);
     }

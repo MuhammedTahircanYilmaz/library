@@ -1,17 +1,13 @@
 package com.projects.library.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import org.springframework.data.annotation.Id;
+
 import org.springframework.data.relational.core.mapping.Column;
 
-import java.io.Serializable;
-
+@Entity
 @Table(name = "user")
-public record User(
+public record UserEntity(
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
         Integer id,
         @Column("username")

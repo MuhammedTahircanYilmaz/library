@@ -23,19 +23,19 @@ public record Item(
         @Column("itemType")
         @NotBlank
         Type itemType,
-        @Column("author_studio")
+        @Column("authorStudio")
         @NotBlank
-        String author_studio,
+        String authorStudio,
         @Column("rating")
         @NotBlank
         Integer rating,
         @Column("status")
         @NotBlank
         Status status,
-        @Column("date_created")
-        LocalDateTime date_created,
-        @Column("date_updated")
-        LocalDateTime date_updated
+        @Column("dateCreated")
+        LocalDateTime dateCreated,
+        @Column("dateUpdated")
+        LocalDateTime dateUpdated
 ){
 
 }
