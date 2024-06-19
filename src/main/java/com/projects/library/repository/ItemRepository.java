@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ItemRepository extends ListCrudRepository<Item,Integer> {
+public interface ItemRepository extends ListCrudRepository<Item,Long> {
 
     List<Item> findAllByTitleContains(String keyword);
 
@@ -20,5 +20,7 @@ public interface ItemRepository extends ListCrudRepository<Item,Integer> {
 
     @Query("SELECT * FROM Item where itemType = :itemType")
     List<Item> findByItemType(@Param("itemType") Type itemType);
+
+
 }
 

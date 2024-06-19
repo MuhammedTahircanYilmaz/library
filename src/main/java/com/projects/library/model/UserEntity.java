@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import org.springframework.data.relational.core.mapping.Column;
 
 @Entity
-@Table(name = "user")
+@Table(name = "user_entity")
 public record UserEntity(
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
         Integer id,

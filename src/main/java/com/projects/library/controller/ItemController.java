@@ -35,7 +35,7 @@ public class ItemController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/{id}")
-    public void update(@RequestBody Item item, Integer id){
+    public void update(@RequestBody Item item, Long id){
         if(!repository.existsById(id)){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Item Does Not Exist");
         }
@@ -44,7 +44,7 @@ public class ItemController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id){
+    public void delete(@PathVariable Long id){
         repository.deleteById(id);
     }
 
