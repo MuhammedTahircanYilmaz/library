@@ -15,7 +15,7 @@ public class UserEntityDto {
 
     private Long id;
     @NotEmpty
-    private String userName;
+    private String username;
     @NotEmpty(message ="Email should not be empty")
     @Email
     private String email;
