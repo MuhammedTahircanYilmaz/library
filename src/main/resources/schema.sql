@@ -1,6 +1,3 @@
-DROP TABLE IF EXISTS Item;
-DROP TABLE IF EXISTS UserEntity;
-DROP TABLE IF EXISTS user_entity;
 CREATE TABLE IF NOT EXISTS Item(
     id SERIAL PRIMARY KEY,
     title varchar(255) NOT NULL,
@@ -20,7 +17,14 @@ CREATE TABLE IF NOT EXISTS user_entity(
     password text NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS roles(
+    id SERIAL PRIMARY KEY,
+    name varchar(20) NOT NULL
+);
+
 INSERT INTO Item(title,description,author_studio,status,item_type,date_created)
 VALUES ('Past Life Returner','Seon Hu comes back, rules the world','Hedgethehog','ONGOING','WEBNOVEL',CURRENT_TIMESTAMP);
 
-INSERT INTO user_entity(username, email, password) VALUES ('Tahir', 'someemail@gmail.com', 'password')
+INSERT INTO user_entity(username, email, password) VALUES ('Tahir', 'someemail@gmail.com', 'password');
+
+INSERT INTO roles(name) VALUES ('USER')
