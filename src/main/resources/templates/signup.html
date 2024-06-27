@@ -5,36 +5,38 @@
     <title>Sign Up</title>
 </head>
 <body>
-    <h2>Login</h2>
-    <form action="#" th:action="@{/register}" th:object="${userEntity}" method="post">
+    <h2>Sign Up</h2>
+    <form th:action="@{/signup/save}" th:object="${userEntity}" method="post">
+
         <label for="userName">User Name:</label>
-        <input type="text" id="userName" placeholder="Enter username" th:field="*{username}"/>
+        <input type="text" id="userName" name="username" placeholder="Enter username" th:field="*{username}"/>
+
         <p th:errors = "*{username}" class="text-danger"
            th:if="${#fields.hasErrors('username')}"></p>
 
         <br>
 
         <label for="email">email:</label>
-        <input type="email" id="email" placeholder="Enter email" th:field="*{email}"/>
+        <input type="email" name="email" id="email" placeholder="Enter email" th:field="*{email}"/>
         <p th:errors = "*{email}" class="text-danger"
            th:if="${#fields.hasErrors('email')}"></p>
 
         <br>
 
         <label for="password">Password:</label>
-        <input type="password" id="password" placeholder="Enter password" th:field="*{password}"/>
+        <input type="password" name="password" id="password" placeholder="Enter password" th:field="*{password}"/>
         <p th:errors = "*{password}" class="text-danger"
            th:if="${#fields.hasErrors('password')}"></p>
 
         <br>
 
         <button type="submit">Register</button>
-    </form>
-    <br>
-    <p>Already Registered?</p>
-    <br>
-    <form action="http://localhost:8080/">
-        <input type="submit" value="Login"/>
+
+        <div class="form-group mb-3">
+            <button class="btn btn-primary" type="submit">Register</button>
+            <span>Already registered? <a href="/" th:href="@{/login}">Login
+                             here</a></span>
+        </div>
     </form>
 </body>
 </html>

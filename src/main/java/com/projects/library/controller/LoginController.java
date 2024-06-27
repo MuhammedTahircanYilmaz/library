@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 
 @Controller
 public class LoginController {
-    @GetMapping("")
+    @GetMapping("/login")
     public String login(Model model){
         UserEntityDto user = new UserEntityDto();
         model.addAttribute("userEntity", user);

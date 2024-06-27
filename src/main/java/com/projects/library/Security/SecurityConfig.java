@@ -24,39 +24,28 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    public static final String USER= "user";
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-            .authorizeHttpRequests((authz) -> authz
-                    .requestMatchers("/login")
-                    .permitAll()
-                    .requestMatchers("/home")
-                    .hasAuthority(USER)
-                    .requestMatchers(HttpMethod.GET)
-                    .permitAll()
-                    .requestMatchers(HttpMethod.PUT)
-                    .hasAuthority(USER)
-                    .requestMatchers(HttpMethod.POST)
-                    .permitAll()
-                    .requestMatchers(HttpMethod.DELETE)
-                    .hasAuthority(USER)
-                    .anyRequest()
-                    .authenticated()
-            ).formLogin(
-                    form -> form
-                            .loginPage("/login")
-                            .loginProcessingUrl("/login")
-                            .defaultSuccessUrl("/users")
-                            .permitAll()
+        http.csrf(c-> c.disable())
+                .authorizeHttpRequests((authz) -> authz
+                        .requestMatchers("/signup/**").permitAll()
+                        .requestMatchers("/login").permitAll()
+                        .requestMatchers("/home").hasRole("USER")
+                        .anyRequest()
+                        .authenticated()
+                ).formLogin(
+                        form -> form
+                                .loginPage("/login")
+                                .loginProcessingUrl("/login")
+                                .defaultSuccessUrl("/home")
+                                .permitAll()
                 ).logout(
                         logout -> logout
                                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                                 .permitAll()
                 );
 
-        http.csrf(c-> c.disable());
+
         return http.build();
     }
     @Autowired

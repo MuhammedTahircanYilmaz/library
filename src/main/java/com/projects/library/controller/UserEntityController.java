@@ -33,16 +33,14 @@ public class UserEntityController {
                                Model model) {
         UserEntity existingUser = userService.findUserByEmail(userEntityDto.getEmail());
 
-        if(existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()){
+        if(existingUser != null){
             result.rejectValue("email", null,
                     "There is already an account registered wth the same email");
         }
-
         if(result.hasErrors()){
             model.addAttribute("userEntity", userEntityDto);
             return "/signup";
         }
-
         userService.save(userEntityDto);
         return "redirect:/signup?success";
     }

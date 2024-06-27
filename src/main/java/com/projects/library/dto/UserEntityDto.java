@@ -13,7 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class UserEntityDto {
 
-    private Long id;
+    private Long userId;
     @NotEmpty
     private String username;
     @NotEmpty(message ="Email should not be empty")

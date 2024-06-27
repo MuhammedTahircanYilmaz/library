@@ -13,24 +13,27 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Builder
 @Getter
 @Table(name = "user_entity")
 public class UserEntity{
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
+        private Long userId;
+
         @Column("username")
         @NotBlank
         private String username;
+
         @Column("email")
         @NotBlank
         private String email;
+
         @Column("password")
         private String password;
+
         @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
         @JoinTable(
-                name="users_roles",
-                joinColumns={@JoinColumn(name="USER_ID", referencedColumnName="ID")},
-                inverseJoinColumns={@JoinColumn(name="ROLE_ID", referencedColumnName="ID")})
+                name="user_entity_roles",
+                joinColumns={@JoinColumn(name="USER_ID", referencedColumnName="user_id")},
+                inverseJoinColumns={@JoinColumn(name="ROLE_ID", referencedColumnName="id")})
         private List<Role> roles = new ArrayList<>();
 }
