@@ -5,7 +5,6 @@ import com.projects.library.model.Role;
 import com.projects.library.model.UserEntity;
 import com.projects.library.repository.RoleRepository;
 import com.projects.library.repository.UserEntityRepository;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -50,7 +49,8 @@ public class UserServiceImpl implements UserService{
         return userDto;
     }
 
-    public UserEntity findByUsername(String username){
+    @Override
+    public UserEntity findUserByUsername(String username){
         return userRepository.findByUsername(username);
     }
 
@@ -58,6 +58,7 @@ public class UserServiceImpl implements UserService{
     public UserEntity findUserByEmail(String email){
         return userRepository.findByEmail(email);
     }
+
     private Role checkRoleExist() {
         Role role = new Role();
         role.setName("ROLE_USER");

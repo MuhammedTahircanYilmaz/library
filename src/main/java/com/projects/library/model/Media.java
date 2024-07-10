@@ -15,10 +15,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Item {
+@Table(name = "media")
+public class Media {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
+        @Column(name = "media_id")
+        private Long mediaId;
+
+        @Column(name = "username")
+        @NotBlank
+        private String username;
+
+        @Column(name = "user_id")
+        @NotBlank
+        private Long userID;
 
         @Column(name = "title")
         @NotBlank

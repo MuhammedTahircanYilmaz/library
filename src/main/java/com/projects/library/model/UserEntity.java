@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
 import lombok.*;
-import org.springframework.data.relational.core.mapping.Column;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,21 +13,21 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Getter
 @Table(name = "user_entity")
 public class UserEntity{
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "user_id")
         private Long userId;
 
-        @Column("username")
+        @Column(name = "username", unique = true)
         @NotBlank
         private String username;
 
-        @Column("email")
+        @Column(name = "email", unique = true)
         @NotBlank
         private String email;
 
-        @Column("password")
+        @Column(name = "password")
         private String password;
 
         @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)

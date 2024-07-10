@@ -15,5 +15,4 @@ public class LoginController {
         model.addAttribute("userEntity", user);
         return "login";
     }
-
 }
